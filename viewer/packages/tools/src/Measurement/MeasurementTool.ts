@@ -15,7 +15,7 @@ import {
 import { MeasurementManager, Measurement } from './MeasurementManager';
 import { MeasurementLabels } from './MeasurementLabels';
 import { HtmlOverlayTool, HtmlOverlayToolOptions } from '../HtmlOverlay/HtmlOverlayTool';
-import rulerSvg from '!!raw-loader!./styles/ruler.svg';
+import rulerPng from './styles/ruler.png';
 import { MetricsLogger } from '@reveal/metrics';
 
 type MeasurementEvents = 'added' | 'started' | 'ended' | 'disposed';
@@ -428,8 +428,10 @@ export class MeasurementTool extends Cognite3DViewerToolBase {
     // between several classes which is *bad*
     // pramodcog: as clustering is related to tool, it would be ideal to have it here.
     const combineElement = document.createElement('div');
+    const imageElement = document.createElement('img');
+    imageElement.src = rulerPng;
     combineElement.className = MeasurementLabels.stylesId;
-    combineElement.innerHTML = rulerSvg;
+    combineElement.appendChild(imageElement);
 
     return combineElement;
   }
