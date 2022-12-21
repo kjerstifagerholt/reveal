@@ -61,7 +61,12 @@ module.exports = env => {
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/,
-          use: ['file-loader']
+          use: [{
+            loader: 'url-loader',
+            options: {
+              limit: 16000,
+            }
+          }]
         },
         {
           test: /\.(glsl|vert|frag)$/,
